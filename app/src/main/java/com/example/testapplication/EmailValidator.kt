@@ -4,7 +4,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import java.util.regex.Pattern
 
-class EmailValidator: TextWatcher {
+class EmailValidator : TextWatcher {
     internal var isValid = false
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
 
@@ -15,6 +15,11 @@ class EmailValidator: TextWatcher {
     }
 
     companion object {
+        private val emailNull = null
+        private val emailExample = "user@yandex.ru"
+        private val emailArray = arrayOf("name@email.ru", "test@test.com", "user@user.co.uk")
+        private val arrayNumber = arrayOf(1, 2, 3)
+
         //паттерн для сравнения
         private val EMAIL_PATTERN = Pattern.compile(
             "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
@@ -29,6 +34,13 @@ class EmailValidator: TextWatcher {
         fun isValidEmail(email: CharSequence?): Boolean {
             return email != null && EMAIL_PATTERN.matcher(email).matches()
         }
-    }
 
+        fun checkEmail(email: String?): String? {
+            return email
+        }
+
+        fun arrayOfEmail(array: Array<String>): Array<String> {
+            return array
+        }
+    }
 }
